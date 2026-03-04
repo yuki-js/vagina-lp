@@ -1,0 +1,111 @@
+/* ===== Google Fonts Import ===== */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap");
+
+/* ===== CSS Custom Properties ===== */
+:root {
+  /* Base colors */
+  --color-bg: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-surface-elevated: #ffffff;
+  --color-text-primary: #1a1a2e;
+  --color-text-secondary: #6b7280;
+  --color-border: #e5e7eb;
+
+  /* Brand colors (from Flutter AppTheme) */
+  --color-primary: #6c63ff;
+  --color-secondary: #00d9ff;
+  --color-accent: #6c63ff;
+  --color-accent-secondary: #00d4aa;
+  --color-accent-gradient: linear-gradient(135deg, #6c63ff, #00d4aa);
+
+  /* Semantic colors (from Flutter AppTheme) */
+  --color-error: #ff6b6b;
+  --color-success: #4ecb71;
+  --color-warning: #ffe66d;
+
+  /* Chat-specific colors */
+  --color-chat-user-bg: #6c63ff;
+  --color-chat-user-text: #ffffff;
+  --color-chat-assistant-bg: #ffffff;
+  --color-chat-assistant-text: #1a1a2e;
+  --color-chat-assistant-border: rgba(107, 114, 128, 0.2);
+
+  /* Typography */
+  --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+
+  /* Layout */
+  --max-width: 1120px;
+  --header-height: 64px;
+
+  /* Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ===== Reset ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+input {
+  font-family: inherit;
+}
+
+/* ===== Page Transition Animation ===== */
+#page-content {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+body.page-transition #page-content {
+  opacity: 0;
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

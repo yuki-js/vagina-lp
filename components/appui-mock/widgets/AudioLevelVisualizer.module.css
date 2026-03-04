@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2px;
+  padding: 0 24px;
+}
+
+.bar {
+  width: 6px;
+  border-radius: 3px;
+  transition: height 50ms ease-out, background-color 50ms ease-out;
+  flex-shrink: 0;
+}
