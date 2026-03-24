@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ScrollReveal } from "../ScrollReveal/ScrollReveal";
 import { PhoneMock } from "../PhoneMock/PhoneMock";
 import { HomeScreenMock, TabType } from "../HomeScreenMock/HomeScreenMock";
-import styles from "./CallExperienceSection.module.css";
+import styles from "./HomeExperienceSection.module.css";
 
 const tabs: { id: TabType; title: string; description: string }[] = [
   {
@@ -28,7 +28,7 @@ const tabs: { id: TabType; title: string; description: string }[] = [
   },
 ];
 
-export function CallExperienceSection() {
+export function HomeExperienceSection() {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
 
