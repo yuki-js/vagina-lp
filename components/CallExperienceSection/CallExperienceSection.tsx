@@ -2,13 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ScrollReveal } from "../ScrollReveal/ScrollReveal";
 import { PhoneMock } from "../PhoneMock/PhoneMock";
+import { CallScreenMock } from "../CallScreenMock/CallScreenMock";
 import styles from "./CallExperienceSection.module.css";
 
 const tabs = [
   {
-    id: "placeholder",
-    title: "Placeholder",
-    description: "Placeholder description",
+    id: "call",
+    title: "Voice Call",
+    description: "Experience real-time voice conversations with AI agents.",
   },
 ];
 
@@ -90,9 +91,7 @@ export function CallExperienceSection() {
             viewport={{ once: true }}
           >
             <PhoneMock size="xlarge">
-              <div className={styles.placeholder}>
-                {/* Visual content based on activeTabIndex could go here */}
-              </div>
+              <CallScreenMock />
             </PhoneMock>
 
             <div className={styles.panel}>
