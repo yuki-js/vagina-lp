@@ -1,6 +1,6 @@
 /**
  * Brand configuration
- * 
+ *
  * Centralized brand identity management.
  * Update these constants to rebrand the entire application.
  */
@@ -19,7 +19,8 @@ export const BRAND = {
   /**
    * Full brand description
    */
-  description: "Modern developer tools that empower teams to build, collaborate, and ship products faster.",
+  description:
+    "Modern developer tools that empower teams to build, collaborate, and ship products faster.",
 
   /**
    * External links
@@ -29,6 +30,9 @@ export const BRAND = {
     docs: "#docs",
     product: "#product",
     pricing: "#pricing",
+    terms: "#terms",
+    privacy: "#privacy",
+    company: "#company",
   },
 
   /**

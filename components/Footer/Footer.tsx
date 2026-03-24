@@ -27,8 +27,17 @@ export function Footer() {
           <a href={BRAND.links.pricing} className={styles.link}>
             Pricing
           </a>
+          <a href={BRAND.links.terms} className={styles.link}>
+            Terms of Service
+          </a>
+          <a href={BRAND.links.privacy} className={styles.link}>
+            Privacy Policy
+          </a>
           <a href={BRAND.links.docs} className={styles.link}>
             Docs
+          </a>
+          <a href={BRAND.links.company} className={styles.link}>
+            Company
           </a>
         </div>
 

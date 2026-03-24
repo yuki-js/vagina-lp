@@ -34,12 +34,15 @@
 .links {
   display: flex;
   gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .link {
   font-size: 0.875rem;
   color: var(--color-text-secondary);
   transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .link:hover {
