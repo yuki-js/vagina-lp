@@ -1,5 +1,6 @@
 import { Header } from "../../components/Header/Header";
 import { Hero } from "../../components/Hero/Hero";
+import { CallExperienceSection } from "../../components/CallExperienceSection/CallExperienceSection";
 import { FeaturesSection } from "../../components/FeaturesSection/FeaturesSection";
 import { HowItWorksSection } from "../../components/HowItWorksSection/HowItWorksSection";
 import { PricingSection } from "../../components/PricingSection/PricingSection";
@@ -11,6 +12,7 @@ export default function Page() {
     <>
       <Header />
       <Hero />
+      <CallExperienceSection />
       <PricingSection />
       <WaitlistSection />
       <Footer />
