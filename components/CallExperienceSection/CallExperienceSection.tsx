@@ -26,7 +26,7 @@ export function CallExperienceSection() {
             viewport={{ once: true }}
             className={styles.subheading}
           >
-            A familiar calling experience, designed for real-time intelligence.
+            Feels as natural as making a call.
           </motion.p>
         </ScrollReveal>
 
@@ -42,6 +42,10 @@ export function CallExperienceSection() {
               {/* Phone content will go here */}
             </div>
           </PhoneMock>
+
+          <div className={styles.panel}>
+            {/* Panel content will go here */}
+          </div>
         </motion.div>
       </div>
     </section>
