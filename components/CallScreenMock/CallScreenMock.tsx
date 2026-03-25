@@ -192,16 +192,16 @@ export function CallScreenMock({
         <div className={styles.page}>
           <div className={styles.paneHeader}>
             <div />
-            <span className={styles.paneTitle}>チャット</span>
+            <span className={styles.paneTitle}>Chat</span>
             <button className={styles.navAction} onClick={goToCall}>
-              <span>通話画面</span>
+              <span>Call Screen</span>
               <MdChevronRight />
             </button>
           </div>
           <div className={styles.chatList}>
             {streamedMessages.length === 0 ? (
               <div className={styles.emptyChat}>
-                <span>スクロールしてAIとのチャットを開始</span>
+                <span>Scroll to start chatting with AI</span>
               </div>
             ) : (
               streamedMessages.map((msg) => (
@@ -219,7 +219,7 @@ export function CallScreenMock({
             <input
               type="text"
               className={styles.chatInput}
-              placeholder="メッセージを入力..."
+              placeholder="Type a message..."
             />
             <button className={styles.controlButton}>
               <MdSend size={24} color="#6C63FF" />
@@ -271,13 +271,13 @@ export function CallScreenMock({
                   <div className={styles.buttonIconWrapper}>
                     <MdChatBubbleOutline />
                   </div>
-                  <span className={styles.buttonLabel}>チャット</span>
+                  <span className={styles.buttonLabel}>Chat</span>
                 </button>
                 <button className={styles.controlButton} onClick={goToNotepad}>
                   <div className={styles.buttonIconWrapper}>
                     <MdOutlineNoteAlt />
                   </div>
-                  <span className={styles.buttonLabel}>ノートパッド</span>
+                  <span className={styles.buttonLabel}>Notepad</span>
                 </button>
               </div>
 
@@ -294,7 +294,7 @@ export function CallScreenMock({
                   >
                     {isSpeakerMuted ? <MdVolumeOff /> : <MdVolumeUp />}
                   </div>
-                  <span className={styles.buttonLabel}>スピーカー</span>
+                  <span className={styles.buttonLabel}>Speaker</span>
                 </button>
                 <button
                   className={styles.controlButton}
@@ -307,7 +307,7 @@ export function CallScreenMock({
                   >
                     {isMuted ? <MdMicOff /> : <MdMic />}
                   </div>
-                  <span className={styles.buttonLabel}>消音</span>
+                  <span className={styles.buttonLabel}>Mute</span>
                 </button>
                 <button
                   className={styles.controlButton}
@@ -323,7 +323,7 @@ export function CallScreenMock({
                   >
                     <MdFrontHand />
                   </div>
-                  <span className={styles.buttonLabel}>割込み</span>
+                  <span className={styles.buttonLabel}>Interrupt</span>
                 </button>
               </div>
 
@@ -344,9 +344,9 @@ export function CallScreenMock({
           <div className={styles.paneHeader}>
             <button className={styles.navAction} onClick={goToCall}>
               <MdChevronLeft />
-              <span>通話画面</span>
+              <span>Call Screen</span>
             </button>
-            <span className={styles.paneTitle}>ノートパッド</span>
+            <span className={styles.paneTitle}>Notepad</span>
             <div />
           </div>
           <div className={styles.tabBar}>
@@ -377,7 +377,7 @@ export function CallScreenMock({
                 <NotepadRenderer content={streamedNotepad} />
               ) : (
                 <span className={styles.notepadPlaceholder}>
-                  スクロールすると、AIが自動的にノートに記録します
+                  Scroll and AI will automatically record notes
                 </span>
               )}
             </div>

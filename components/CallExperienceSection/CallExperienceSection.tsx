@@ -30,41 +30,41 @@ const SCROLL_THRESHOLDS = {
   notepadEnd: 0.6,
 } as const;
 
-const NOTEPAD_CONTENT = `# ランチミーティング
+const NOTEPAD_CONTENT = `# Lunch Meeting
 
-## 予約情報
-- **日程**: 来週火曜日
-- **時間**: 13:00
-- **店舗**: Italian Restaurant
+## Reservation Details
+- **Date**: Next Tuesday
+- **Time**: 13:00
+- **Restaurant**: Italian Restaurant
 
-## ステータス
-[ ] 予約確認
-[ ] 予定に追加
+## Status
+[ ] Confirm reservation
+[ ] Add to calendar
 `;
 
 const CONVERSATION = [
-  { id: "ai-0", text: "何かお手伝いしましょうか？", isUser: false },
+  { id: "ai-0", text: "How can I help you?", isUser: false },
   {
     id: "user-1",
-    text: "来週火曜日の lunch、Italian で予約取って。",
+    text: "Book an Italian restaurant for lunch next Tuesday.",
     isUser: true,
   },
-  { id: "ai-1", text: "了解です。来週火曜日の lunch ですね。", isUser: false },
-  { id: "ai-2", text: "Italian restaurant を検索します。", isUser: false },
+  { id: "ai-1", text: "Got it. Lunch on Tuesday next week.", isUser: false },
+  { id: "ai-2", text: "Searching for Italian restaurant.", isUser: false },
   {
     id: "ai-3",
-    text: "13時の予約を見つけました。確定しますか？",
+    text: "Found a reservation at 1 PM. Should I confirm it?",
     isUser: false,
   },
-  { id: "user-2", text: "うん、お願い。", isUser: true },
+  { id: "user-2", text: "Yes, please.", isUser: true },
   {
     id: "ai-4",
-    text: "予約確定しました。ノートパッドに記録します。",
+    text: "Reservation confirmed. I'll record it in the notepad.",
     isUser: false,
   },
   {
     id: "ai-5",
-    text: "完了しました。meeting_notes.md に追加済みです。",
+    text: "Done. I've added it to meeting_notes.md.",
     isUser: false,
   },
 ];

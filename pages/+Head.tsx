@@ -10,7 +10,7 @@ export function Head() {
       <meta property="og:title" content="VAGINA — Voice AGI Notepad Agent" />
       <meta
         property="og:description"
-        content="声で考え、AIが書く。リアルタイム音声対話とAIノートパッドで、あなたの思考をカタチにする次世代アシスタント。"
+        content="Think with your voice, let AGI write. A next-generation assistant that shapes your thoughts through real-time voice dialogue and AGI notepad."
       />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary_large_image" />
