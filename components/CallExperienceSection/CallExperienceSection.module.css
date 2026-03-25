@@ -147,13 +147,10 @@
 
   .panel {
     position: absolute;
-    right: 5%;
-    top: 50%;
-    transform: translateY(-50%);
     width: 320px;
+    right: 0;
     z-index: 5;
-    background: rgba(0, 0, 0, 0.4);
-    padding: 32px;
+    padding: 24px;
   }
 }
 
@@ -167,15 +164,11 @@
   }
 
   .preview {
-    margin-top: 48px;
   }
 
   .panel {
-    width: calc(100% - 48px);
-    position: relative;
-    right: auto;
-    top: auto;
-    transform: none;
-    margin: 24px auto;
+    width: 320px;
+    top: 50%;
+    aspect-ratio: 3/2;
   }
 }

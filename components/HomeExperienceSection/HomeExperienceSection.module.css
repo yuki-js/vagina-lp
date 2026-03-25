@@ -100,8 +100,6 @@
   .panel {
     position: absolute;
     right: 0;
-    top: 50%;
-    transform: translateY(-50%);
     width: 400px;
     z-index: 5;
   }
@@ -117,10 +115,11 @@
   }
 
   .preview {
-    margin-top: 48px;
   }
 
   .panel {
     width: 320px;
+    top: 50%;
+    aspect-ratio: 3/2;
   }
 }
