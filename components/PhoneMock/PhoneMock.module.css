@@ -78,6 +78,21 @@
   opacity: 0.9;
 }
 
+/* Dark variant for status bar */
+.statusBarDark {
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.timeDark {
+  color: #ffffff;
+}
+
+.statusIconDark {
+  color: #ffffff;
+  opacity: 0.9;
+}
+
 /* Safe Area */
 .safeArea {
   flex: 1;

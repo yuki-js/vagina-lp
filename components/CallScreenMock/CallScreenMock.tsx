@@ -22,11 +22,106 @@ import {
 } from "react-icons/md";
 import styles from "./CallScreenMock.module.css";
 
+interface NotepadRendererProps {
+  content: string;
+}
+
+function NotepadRenderer({ content }: NotepadRendererProps) {
+  const lines = content.split("\n");
+
+  return (
+    <div className={styles.notepadContentInner}>
+      {lines.map((line, i) => {
+        // H1: # heading
+        if (line.startsWith("# ")) {
+          return (
+            <h1 key={i} className={styles.notepadH1}>
+              {line.slice(2)}
+            </h1>
+          );
+        }
+        // H2: ## heading
+        if (line.startsWith("## ")) {
+          return (
+            <h2 key={i} className={styles.notepadH2}>
+              {line.slice(3)}
+            </h2>
+          );
+        }
+        // Unordered list item: - or *
+        if (line.startsWith("- ") || line.startsWith("* ")) {
+          return (
+            <li key={i} className={styles.notepadLi}>
+              {renderInline(line.slice(2))}
+            </li>
+          );
+        }
+        // Checkbox: [ ] or [x]
+        if (line.match(/^\[.\]/)) {
+          const checked = line.startsWith("[x]");
+          const text = line.slice(4);
+          return (
+            <div key={i} className={styles.notepadCheckbox}>
+              <span className={checked ? styles.checked : styles.unchecked}>
+                {checked ? "✓" : "○"}
+              </span>
+              <span>{renderInline(text)}</span>
+            </div>
+          );
+        }
+        // Empty line
+        if (line.trim() === "") {
+          return <br key={i} />;
+        }
+        // Regular text
+        return (
+          <p key={i} className={styles.notepadP}>
+            {renderInline(line)}
+          </p>
+        );
+      })}
+    </div>
+  );
+}
+
+function renderInline(text: string): React.ReactNode {
+  // Handle **bold** and *italic*
+  const parts: React.ReactNode[] = [];
+  let remaining = text;
+  let key = 0;
+
+  while (remaining.length > 0) {
+    const boldMatch = remaining.match(/\*\*(.+?)\*\*/);
+    if (boldMatch && boldMatch.index !== undefined) {
+      if (boldMatch.index > 0) {
+        parts.push(remaining.slice(0, boldMatch.index));
+      }
+      parts.push(<strong key={key++}>{boldMatch[1]}</strong>);
+      remaining = remaining.slice(boldMatch.index + boldMatch[0].length);
+      continue;
+    }
+    parts.push(remaining);
+    break;
+  }
+
+  return parts.length > 0 ? parts : text;
+}
+
+export interface ChatMessage {
+  id: string;
+  text: string;
+  isUser: boolean;
+  isStreaming?: boolean;
+}
+
 interface CallScreenMockProps {
   name?: string;
   emoji?: string;
   subtitle?: string;
   onEndCall?: () => void;
+  externalPageIndex?: number;
+  streamedMessages?: ChatMessage[];
+  streamedNotepad?: string;
 }
 
 export function CallScreenMock({
@@ -34,8 +129,18 @@ export function CallScreenMock({
   emoji,
   subtitle = "ADVANCED VAGINAL INTELLIGENCE",
   onEndCall,
+  externalPageIndex,
+  streamedMessages = [],
+  streamedNotepad,
 }: CallScreenMockProps) {
-  const [activePageIndex, setActivePageIndex] = useState(1);
+  const [internalPageIndex, setInternalPageIndex] = useState(1);
+  const activePageIndex =
+    externalPageIndex !== undefined ? externalPageIndex : internalPageIndex;
+  const setActivePageIndex = (index: number | ((prev: number) => number)) => {
+    if (externalPageIndex === undefined) {
+      setInternalPageIndex(index);
+    }
+  };
   const [seconds, setSeconds] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
   const [isSpeakerMuted, setIsSpeakerMuted] = useState(false);
@@ -82,17 +187,6 @@ export function CallScreenMock({
         className={styles.pageView}
         animate={{ x: `-${activePageIndex * 33.3333}%` }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        drag="x"
-        dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={0.2}
-        onDragEnd={(_, info) => {
-          const swipeThreshold = 50;
-          if (info.offset.x > swipeThreshold && activePageIndex > 0) {
-            setActivePageIndex(activePageIndex - 1);
-          } else if (info.offset.x < -swipeThreshold && activePageIndex < 2) {
-            setActivePageIndex(activePageIndex + 1);
-          }
-        }}
       >
         {/* Chat Pane */}
         <div className={styles.page}>
@@ -105,20 +199,21 @@ export function CallScreenMock({
             </button>
           </div>
           <div className={styles.chatList}>
-            <div className={`${styles.chatBubble} ${styles.aiBubble}`}>
-              接続されました。何かお手伝いしましょうか？
-            </div>
-            <div className={`${styles.chatBubble} ${styles.userBubble}`}>
-              今日のスケジュールを確認して。
-            </div>
-            <div className={styles.toolBadge}>
-              <MdBuild size={12} />
-              <span>calendar_list_events</span>
-              <MdChevronRight size={12} />
-            </div>
-            <div className={`${styles.chatBubble} ${styles.aiBubble}`}>
-              現在、カレンダーを確認しています...
-            </div>
+            {streamedMessages.length === 0 ? (
+              <div className={styles.emptyChat}>
+                <span>スクロールしてAIとのチャットを開始</span>
+              </div>
+            ) : (
+              streamedMessages.map((msg) => (
+                <div
+                  key={msg.id}
+                  className={`${styles.chatBubble} ${msg.isUser ? styles.userBubble : styles.aiBubble}`}
+                >
+                  {msg.text}
+                  {msg.isStreaming && <span className={styles.cursor}>|</span>}
+                </div>
+              ))
+            )}
           </div>
           <div className={styles.chatInputArea}>
             <input
@@ -261,7 +356,7 @@ export function CallScreenMock({
             </div>
             <div className={styles.tab}>
               <MdArticle size={14} />
-              <span>todo_list.txt</span>
+              <span>schedule.txt</span>
             </div>
           </div>
           <div className={styles.notepadContent}>
@@ -278,14 +373,13 @@ export function CallScreenMock({
               </div>
             </div>
             <div className={styles.notepadBody}>
-              # ミーティングノート {"\n\n"}
-              ## 今日の議題 {"\n"}- AIエージェントの通話UI刷新 {"\n"}-
-              左右スワイプによる画面遷移の実装 {"\n"}-
-              ガラスモーフィズムによるリッチなデザイン {"\n\n"}
-              ## 決定事項 {"\n"}
-              1. 左右に3つのパネルを配置する {"\n"}
-              2. 中央をメインの通話画面とする {"\n"}
-              3. 左がチャット、右がノートパッド
+              {streamedNotepad ? (
+                <NotepadRenderer content={streamedNotepad} />
+              ) : (
+                <span className={styles.notepadPlaceholder}>
+                  スクロールすると、AIが自動的にノートに記録します
+                </span>
+              )}
             </div>
           </div>
         </div>

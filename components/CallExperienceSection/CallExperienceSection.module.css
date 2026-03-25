@@ -13,7 +13,7 @@
   height: 100lvh;
   position: sticky;
   top: 0;
-  margin-top: -50vh;
+  margin-top: -100lvh;
   overflow: visible;
   z-index: -100;
   clip-path: circle(var(--clip-radius, 0%) at 50% 100%);
