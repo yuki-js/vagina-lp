@@ -41,9 +41,7 @@ export function Footer() {
           </a>
         </div>
 
-        <p className={styles.copyright}>
-          © {year} {BRAND.copyright}. All rights reserved.
-        </p>
+        <div className={styles.footHero}>VAGINA</div>
       </div>
     </footer>
   );

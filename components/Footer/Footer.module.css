@@ -49,8 +49,10 @@
   color: var(--color-text-primary);
 }
 
-.copyright {
-  font-size: 0.75rem;
-  color: var(--color-text-secondary);
-  opacity: 0.6;
+.footHero {
+  font-size: 32vw;
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -0.1em;
+  color: var(--color-text-primary);
 }
