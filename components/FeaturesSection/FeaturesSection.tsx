@@ -14,9 +14,9 @@ const FEATURES = [
   {
     id: "notepad",
     icon: "📝",
-    title: "AI Notepad",
+    title: "AGI Notepad",
     description:
-      "Your ideas transform instantly into living documents. As you speak, the AI listens and writes, capturing your thoughts with precision.",
+      "Your ideas transform instantly into living documents. As you speak, the AGI listens and writes, capturing your thoughts with precision.",
   },
   {
     id: "agents",

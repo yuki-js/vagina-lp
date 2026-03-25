@@ -201,7 +201,7 @@ export function CallScreenMock({
           <div className={styles.chatList}>
             {streamedMessages.length === 0 ? (
               <div className={styles.emptyChat}>
-                <span>Scroll to start chatting with AI</span>
+                <span>Scroll to start chatting with AGI</span>
               </div>
             ) : (
               streamedMessages.map((msg) => (
@@ -377,7 +377,7 @@ export function CallScreenMock({
                 <NotepadRenderer content={streamedNotepad} />
               ) : (
                 <span className={styles.notepadPlaceholder}>
-                  Scroll and AI will automatically record notes
+                  Scroll and AGI will automatically record notes
                 </span>
               )}
             </div>

@@ -9,7 +9,7 @@ const tabs: { id: TabType; title: string; description: string }[] = [
   {
     id: "speed-dial",
     title: "Quick Access",
-    description: "Save your favorite AI characters for instant calling",
+    description: "Save your favorite AGI characters for instant calling",
   },
   {
     id: "sessions",
@@ -19,7 +19,7 @@ const tabs: { id: TabType; title: string; description: string }[] = [
   {
     id: "agents",
     title: "Text Agents",
-    description: "Manage your AI assistants for complex tasks",
+    description: "Manage your AGI assistants for complex tasks",
   },
   {
     id: "more",
@@ -45,7 +45,8 @@ export function HomeExperienceSection() {
       // Calculate scroll progress within the section
       const scrollStart = sectionTop - viewportHeight / 2;
       const scrollEnd = sectionTop + sectionHeight - viewportHeight / 2;
-      const scrollProgress = (scrollY - scrollStart) / (scrollEnd - scrollStart);
+      const scrollProgress =
+        (scrollY - scrollStart) / (scrollEnd - scrollStart);
 
       // Map scroll progress to tab index
       const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
@@ -109,8 +110,12 @@ export function HomeExperienceSection() {
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <h3 className={styles.panelTitle}>{tabs[activeTabIndex].title}</h3>
-                  <p className={styles.panelDescription}>{tabs[activeTabIndex].description}</p>
+                  <h3 className={styles.panelTitle}>
+                    {tabs[activeTabIndex].title}
+                  </h3>
+                  <p className={styles.panelDescription}>
+                    {tabs[activeTabIndex].description}
+                  </p>
                 </motion.div>
               </AnimatePresence>
             </div>

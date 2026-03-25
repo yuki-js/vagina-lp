@@ -9,17 +9,17 @@ const tabs = [
   {
     id: "call",
     title: "Voice Call",
-    description: "Experience real-time voice conversations with AI agents.",
+    description: "Experience real-time voice conversations with AGI agents.",
   },
   {
     id: "chat",
-    title: "AI Chat",
-    description: "Bidirectional AI conversation with tool execution.",
+    title: "AGI Chat",
+    description: "Bidirectional AGI conversation with tool execution.",
   },
   {
     id: "notepad",
     title: "Auto Notepad",
-    description: "AI automatically records important details to your notes.",
+    description: "AGI automatically records important details to your notes.",
   },
 ];
 
@@ -211,7 +211,7 @@ export function CallExperienceSection() {
             viewport={{ once: true }}
             className={styles.heading}
           >
-            Talk, Think, Let AI Handle the Rest
+            Talk, Think, Let AGI Handle the Rest
           </motion.h2>
 
           <motion.p
@@ -221,7 +221,7 @@ export function CallExperienceSection() {
             viewport={{ once: true }}
             className={styles.description}
           >
-            Focus on expressing your ideas while our AI agent handles
+            Focus on expressing your ideas while our AGI agent handles
             note-taking, organization, and follow-up actions automatically.
           </motion.p>
         </ScrollReveal>
