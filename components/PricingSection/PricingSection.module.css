@@ -1,13 +1,47 @@
 .section {
   padding: 120px 24px;
-  background: #000;
   position: relative;
   overflow: hidden;
+}
+
+.backgroundPattern {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300vw;
+  height: 300vh;
+  transform: translate(-24%, -60%) rotate(-30deg);
+  pointer-events: none;
+  z-index: -100;
+  display: flex;
+  flex-direction: column;
+  opacity: 0.15;
+  user-select: none;
+  font-size: 96px;
+}
+
+.patternRow {
+  display: flex;
+  white-space: nowrap;
+  gap: 0.3em;
+  line-height: 1em;
+}
+
+.patternRow:nth-child(even) {
+  margin-left: -2em; /* Staggered effect */
+}
+
+.patternText {
+  font-weight: 800;
+  color: #000;
+  letter-spacing: 0.05em;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .header {
@@ -21,8 +55,18 @@
   font-weight: 500;
   line-height: 1.12;
   letter-spacing: -0.04em;
-  color: #fff;
+  color: #000;
   margin-bottom: 24px;
+  text-shadow:
+    0px 0px 0px white,
+    0px 2px 0px white,
+    0px -2px 0px white,
+    2px 0px 0px white,
+    -2px 0px 0px white,
+    2px 2px 0px white,
+    -2px -2px 0px white,
+    2px -2px 0px white,
+    -2px 2px 0px white;
 }
 
 .heading strong {
@@ -32,9 +76,19 @@
 .subheading {
   font-size: clamp(0.9375rem, 1.8vw, 1.0625rem);
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(0, 0, 0, 0.6);
   max-width: 480px;
   margin: 0 auto;
+  text-shadow:
+    0px 0px 0px white,
+    0px 1px 0px white,
+    0px -1px 0px white,
+    1px 0px 0px white,
+    -1px 0px 0px white,
+    1px 1px 0px white,
+    -1px -1px 0px white,
+    1px -1px 0px white,
+    -1px 1px 0px white;
 }
 
 .grid {
@@ -47,25 +101,22 @@
   width: 100%;
   max-width: 400px;
   padding: 48px;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.15);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .tierName {
   font-size: 0.875rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 16px;
@@ -74,7 +125,7 @@
 .price {
   font-size: 3rem;
   font-weight: 700;
-  color: #fff;
+  color: #000;
   margin-bottom: 4px;
   display: flex;
   align-items: baseline;
@@ -85,7 +136,7 @@
 .oldPrice {
   font-size: 1.5rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(0, 0, 0, 0.3);
   text-decoration: line-through;
 }
 
@@ -103,18 +154,18 @@
 .period {
   font-size: 1rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .betaNote {
   font-size: 0.875rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .tierDescription {
   font-size: 0.9375rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(0, 0, 0, 0.6);
   margin-bottom: 32px;
 }
 
@@ -127,7 +178,7 @@
 
 .feature {
   font-size: 0.9375rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   margin-bottom: 16px;
   display: flex;
   align-items: center;
@@ -135,7 +186,7 @@
 }
 
 .featureIcon {
-  color: #fff;
+  color: #000;
   opacity: 0.6;
 }
 
@@ -143,8 +194,8 @@
   width: 100%;
   padding: 16px;
   border-radius: 12px;
-  background: #fff;
-  color: #000;
+  background: #000;
+  color: #fff;
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
@@ -160,12 +211,12 @@
   .section {
     padding: 80px 20px;
   }
-  
+
   .grid {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .card {
     padding: 32px;
   }

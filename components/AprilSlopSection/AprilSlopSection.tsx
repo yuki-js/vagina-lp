@@ -1,14 +1,13 @@
-import { motion } from "framer-motion";
 import { ScrollReveal } from "../ScrollReveal/ScrollReveal";
 import styles from "./AprilSlopSection.module.css";
 
 const ACRONYM: { letter: string; word: string }[] = [
-  { letter: "V", word: "Voice" },
-  { letter: "A", word: "Artificial" },
-  { letter: "G", word: "General" },
-  { letter: "I", word: "Intelligence" },
-  { letter: "N", word: "Notepad" },
-  { letter: "A", word: "Agent" },
+  { letter: "V", word: "oice" },
+  { letter: "A", word: "rtificial" },
+  { letter: "G", word: "eneral" },
+  { letter: "I", word: "ntelligence" },
+  { letter: "N", word: "otepad" },
+  { letter: "A", word: "gent" },
 ];
 
 export function AprilSlopSection() {
@@ -16,42 +15,26 @@ export function AprilSlopSection() {
     <section className={styles.section}>
       <div className={styles.container}>
         <ScrollReveal className={styles.header}>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className={styles.heading}
-          >
+          <h2 className={styles.heading}>
             Certified <strong>April Slop</strong>.
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            viewport={{ once: true }}
-            className={styles.subheading}
-          >
+          <p className={styles.subheading}>
             Born on April 1st. Every letter in the name earned its place. The
             word they spell did not — and that is entirely the point.
-          </motion.p>
+          </p>
         </ScrollReveal>
 
-        <div className={styles.acronym}>
+        <div className={styles.squareRow}>
           {ACRONYM.map(({ letter, word }, i) => (
-            <motion.div
-              key={i}
-              className={styles.acronymRow}
-              initial={{ opacity: 0, x: -16 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.07, ease: [0.25, 1, 0.5, 1] }}
-              viewport={{ once: true }}
-            >
-              <span className={styles.acronymLetter}>{letter}</span>
-              <span className={styles.acronymDivider} aria-hidden="true" />
-              <span className={styles.acronymWord}>{word}</span>
-            </motion.div>
+            <ScrollReveal key={i} delay={i * 80}>
+              <div className={styles.letterSquare}>
+                <div className={styles.contentWrapper}>
+                  <span className={styles.squareText}>{letter}</span>
+                  <span className={styles.revealText}>{word}</span>
+                </div>
+              </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ScrollReveal } from "../ScrollReveal/ScrollReveal";
 import { FiCheck } from "react-icons/fi";
 import styles from "./PricingSection.module.css";
+import { BRAND } from "../../config/brand";
 
 const FEATURES = [
   "Voice sessions",
@@ -15,6 +16,17 @@ const FEATURES = [
 export function PricingSection() {
   return (
     <section id="pricing" className={styles.section}>
+      <div className={styles.backgroundPattern} aria-hidden="true">
+        {Array.from({ length: 40 }).map((_, i) => (
+          <div key={i} className={styles.patternRow}>
+            {Array.from({ length: 32 }).map((_, j) => (
+              <span key={j} className={styles.patternText}>
+                {BRAND.name}
+              </span>
+            ))}
+          </div>
+        ))}
+      </div>
       <div className={styles.container}>
         <ScrollReveal className={styles.header}>
           <motion.h2
@@ -49,9 +61,7 @@ export function PricingSection() {
             <div className={styles.tierName}>Pro</div>
             <div className={styles.price}>
               <span className={styles.oldPrice}>$19</span>
-              <div className={styles.newPrice}>
-                Free
-              </div>
+              <div className={styles.newPrice}>Free</div>
               <span className={styles.betaNote}>while in beta</span>
             </div>
             <p className={styles.tierDescription}>
