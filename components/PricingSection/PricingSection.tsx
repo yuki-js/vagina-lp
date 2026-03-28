@@ -16,17 +16,57 @@ const FEATURES = [
 export function PricingSection() {
   return (
     <section id="pricing" className={styles.section}>
-      <div className={styles.backgroundPattern} aria-hidden="true">
-        {Array.from({ length: 40 }).map((_, i) => (
-          <div key={i} className={styles.patternRow}>
-            {Array.from({ length: 32 }).map((_, j) => (
-              <span key={j} className={styles.patternText}>
-                {BRAND.name}
-              </span>
-            ))}
-          </div>
-        ))}
-      </div>
+      <svg className={styles.backgroundPattern} aria-hidden="true">
+        <defs>
+          <pattern
+            id="pricing-bg"
+            width="378"
+            height="196"
+            patternUnits="userSpaceOnUse"
+          >
+            <text
+              x="0"
+              y="0"
+              dominantBaseline="hanging"
+              fill="currentColor"
+              fontSize="98"
+              fontWeight="700"
+              textLength="358"
+              lengthAdjust="spacingAndGlyphs"
+              style={{ fontFamily: "var(--font-sans)" }}
+            >
+              {BRAND.name}
+            </text>
+            <text
+              x="-196"
+              y="98"
+              dominantBaseline="hanging"
+              fill="currentColor"
+              fontSize="98"
+              fontWeight="700"
+              textLength="358"
+              lengthAdjust="spacingAndGlyphs"
+              style={{ fontFamily: "var(--font-sans)" }}
+            >
+              {BRAND.name}
+            </text>
+            <text
+              x="182"
+              y="98"
+              dominantBaseline="hanging"
+              fill="currentColor"
+              fontSize="98"
+              fontWeight="700"
+              textLength="358"
+              lengthAdjust="spacingAndGlyphs"
+              style={{ fontFamily: "var(--font-sans)" }}
+            >
+              {BRAND.name}
+            </text>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#pricing-bg)" />
+      </svg>
       <div className={styles.container}>
         <ScrollReveal className={styles.header}>
           <motion.h2
