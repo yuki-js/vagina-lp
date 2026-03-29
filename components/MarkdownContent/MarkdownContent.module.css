@@ -1,0 +1,67 @@
+.markdownWrapper {
+  color: #374151;
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+.h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 3rem 0 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 2rem 0 1rem;
+}
+
+.p {
+  margin-bottom: 1.5rem;
+}
+
+.ul {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.li {
+  margin-bottom: 0.5rem;
+}
+
+.pre {
+  background: #1f2937;
+  color: #f9fafb;
+  padding: 1.5rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 2rem 0;
+  font-family: inherit;
+}
+
+.inlineCode {
+  background: #f3f4f6;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #c026d3;
+}
+
+@media (max-width: 768px) {
+  .h1 { font-size: 2rem; }
+  .h2 { font-size: 1.5rem; }
+}

@@ -27,12 +27,12 @@ export const BRAND = {
    */
   links: {
     github: "https://github.com/yuki-js/vagina",
-    docs: "#docs",
-    product: "#product",
-    pricing: "#pricing",
-    terms: "#terms",
-    privacy: "#privacy",
-    company: "#company",
+    docs: "/docs",
+    product: "/#product",
+    pricing: "/#pricing",
+    terms: "/terms",
+    privacy: "/privacy",
+    company: "/#company",
   },
 
   /**

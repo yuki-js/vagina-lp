@@ -1,0 +1,129 @@
+.root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fafafa;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.layoutWrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+.content {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 48px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  min-width: 0; /* Important for preventing overflow from code blocks */
+}
+
+.pageHeader {
+  margin-bottom: 40px;
+}
+
+.breadcrumb {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+}
+
+.body {
+  color: #374151;
+  font-size: 1.05rem;
+}
+
+.body h2 {
+  font-size: 1.5rem;
+  margin: 40px 0 20px;
+  color: var(--color-text-primary);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 12px;
+  font-weight: 700;
+}
+
+.body h3 {
+  font-size: 1.25rem;
+  margin: 32px 0 16px;
+  font-weight: 600;
+}
+
+.body p {
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+.body pre {
+  background: #1f2937;
+  color: #f9fafb;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 24px;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 0.95rem;
+}
+
+.body code:not(pre code) {
+  background: #f3f4f6;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: monospace;
+}
+
+.bgText {
+  position: fixed;
+  top: 10%;
+  left: -2%;
+  font-size: 18rem;
+  font-weight: 950;
+  color: rgba(0, 0, 0, 0.015);
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+  line-height: 1;
+  transform: rotate(-5deg);
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 32px 20px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding-top: 100px;
+  }
+
+  .layoutWrapper {
+    flex-direction: column;
+  }
+}
