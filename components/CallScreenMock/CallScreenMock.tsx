@@ -20,6 +20,7 @@ import {
   MdClose,
   MdBuild,
 } from "react-icons/md";
+import { BRAND } from "../../config/brand";
 import styles from "./CallScreenMock.module.css";
 
 interface NotepadRendererProps {
@@ -125,7 +126,7 @@ interface CallScreenMockProps {
 }
 
 export function CallScreenMock({
-  name = "VAGINA",
+  name = BRAND.name,
   emoji,
   subtitle = "ADVANCED VAGINAL INTELLIGENCE",
   onEndCall,

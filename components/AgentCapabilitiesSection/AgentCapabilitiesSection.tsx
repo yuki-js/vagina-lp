@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ScrollReveal } from "../ScrollReveal/ScrollReveal";
 import { WindowMock } from "../WindowMock/WindowMock";
+import { BRAND } from "../../config/brand";
 import styles from "./AgentCapabilitiesSection.module.css";
 
 // Premium Abstract SVGs
@@ -178,7 +179,7 @@ export function AgentCapabilitiesSection() {
             Need more intelligence? <strong>Use Recursive Agent.</strong>
           </h2>
           <p className={styles.subheading}>
-            VAGINA runs a real-time Voice Agent that handles conversation, and
+            {BRAND.name} runs a real-time Voice Agent that handles conversation, and
             recursively calls a high-intelligence Text Agent for complex logic.
             Both agents operate concurrently as a unified hybrid system.
           </p>
@@ -345,7 +346,7 @@ export function AgentCapabilitiesSection() {
                       <br />
                       Best,
                       <br />
-                      VAGINA Agent
+                      {BRAND.name} Agent
                     </div>
                   </div>
                 </WindowMock>

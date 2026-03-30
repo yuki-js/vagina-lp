@@ -41,7 +41,7 @@ export function Footer() {
           </a>
         </div>
 
-        <div className={styles.footHero}>VAGINA</div>
+        <div className={styles.footHero}>{BRAND.name}</div>
       </div>
     </footer>
   );

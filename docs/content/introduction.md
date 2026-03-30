@@ -1,8 +1,8 @@
-# Introduction to VAGINA
+# Introduction to Voice AGI Notepad Agent
 
-Welcome to the Voice AGI Notepad Agent (VAGINA) documentation!
+Welcome to the Voice AGI Notepad Agent documentation!
 
-VAGINA is a revolutionary Voice-First AGI platform designed to interact seamlessly with your digital notepad... (just testing the DMS)
+Voice AGI Notepad Agent is a revolutionary Voice-First AGI platform designed to interact seamlessly with your digital notepad... (just testing the DMS)
 
 ## Core Philosophy
 We believe that AI should be:

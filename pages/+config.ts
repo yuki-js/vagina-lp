@@ -1,10 +1,10 @@
 import type { Config } from "vike/types";
 import vikeReact from "vike-react/config";
+import { BRAND } from "../config/brand";
 
 export default {
-  title: "VAGINA — Voice AGI Notepad Agent",
-  description:
-    "Think with your voice, let AGI write. A next-generation assistant that shapes your thoughts through real-time voice dialogue and AGI notepad.",
+  title: `${BRAND.name} — ${BRAND.tagline}`,
+  description: BRAND.description,
 
   extends: [vikeReact],
 } satisfies Config;

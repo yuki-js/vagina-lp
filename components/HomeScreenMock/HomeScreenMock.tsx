@@ -12,6 +12,7 @@ import {
   MdFolder,
   MdStore,
 } from "react-icons/md";
+import { BRAND } from "../../config/brand";
 import styles from "./HomeScreenMock.module.css";
 
 interface SpeedDialCard {
@@ -76,9 +77,27 @@ const mockSessions: CallSession[] = [
 ];
 
 const mockAgents: Agent[] = [
-  { id: "1", name: "Research Assistant", provider: "GPT-4", initial: "R", color: "#6c63ff" },
-  { id: "2", name: "Code Helper", provider: "Claude 3", initial: "C", color: "#2196F3" },
-  { id: "3", name: "Writing Coach", provider: "GPT-4", initial: "W", color: "#4CAF50" },
+  {
+    id: "1",
+    name: "Research Assistant",
+    provider: "GPT-4",
+    initial: "R",
+    color: "#6c63ff",
+  },
+  {
+    id: "2",
+    name: "Code Helper",
+    provider: "Claude 3",
+    initial: "C",
+    color: "#2196F3",
+  },
+  {
+    id: "3",
+    name: "Writing Coach",
+    provider: "GPT-4",
+    initial: "W",
+    color: "#4CAF50",
+  },
 ];
 
 const mockFeatures: Feature[] = [
@@ -94,7 +113,9 @@ interface HomeScreenMockProps {
 
 const tabOrder: TabType[] = ["speed-dial", "sessions", "agents", "more"];
 
-export function HomeScreenMock({ activeTab = "speed-dial" }: HomeScreenMockProps) {
+export function HomeScreenMock({
+  activeTab = "speed-dial",
+}: HomeScreenMockProps) {
   const activeIndex = tabOrder.indexOf(activeTab);
 
   return (
@@ -102,7 +123,7 @@ export function HomeScreenMock({ activeTab = "speed-dial" }: HomeScreenMockProps
       {/* Header */}
       <div className={styles.header}>
         <div className={styles.spacer} />
-        <h1 className={styles.title}>VAGINA</h1>
+        <h1 className={styles.title}>{BRAND.name}</h1>
         <div className={styles.actions}>
           <button className={styles.iconButton} aria-label="Add">
             <MdAdd />
@@ -118,7 +139,7 @@ export function HomeScreenMock({ activeTab = "speed-dial" }: HomeScreenMockProps
         <div
           className={styles.pageView}
           style={{
-            transform: `translateX(-${activeIndex * 25}%)`
+            transform: `translateX(-${activeIndex * 25}%)`,
           }}
         >
           <div className={styles.page}>
@@ -138,11 +159,17 @@ export function HomeScreenMock({ activeTab = "speed-dial" }: HomeScreenMockProps
 
       {/* Bottom Navigation */}
       <div className={styles.bottomNav}>
-        <button className={styles.navItem} data-active={activeTab === "speed-dial"}>
+        <button
+          className={styles.navItem}
+          data-active={activeTab === "speed-dial"}
+        >
           <MdStar />
           <span className={styles.navLabel}>Speed Dial</span>
         </button>
-        <button className={styles.navItem} data-active={activeTab === "sessions"}>
+        <button
+          className={styles.navItem}
+          data-active={activeTab === "sessions"}
+        >
           <MdHistory />
           <span className={styles.navLabel}>Sessions</span>
         </button>
@@ -171,7 +198,9 @@ function SpeedDialTabContent() {
     <>
       <div className={styles.sectionHeader}>
         <h2 className={styles.sectionTitle}>Speed Dial</h2>
-        <p className={styles.sectionSubtitle}>Quick access to your favorite characters</p>
+        <p className={styles.sectionSubtitle}>
+          Quick access to your favorite characters
+        </p>
       </div>
       <div className={styles.grid}>
         {mockSpeedDials.map((dial) => (
@@ -227,9 +256,12 @@ function AgentsTabContent() {
       <div className={styles.listContainer}>
         {mockAgents.map((agent) => (
           <div key={agent.id} className={styles.listItem}>
-            <div 
+            <div
               className={styles.avatar}
-              style={{ backgroundColor: `${agent.color}33`, color: agent.color }}
+              style={{
+                backgroundColor: `${agent.color}33`,
+                color: agent.color,
+              }}
             >
               {agent.initial}
             </div>
@@ -250,10 +282,10 @@ function MoreTabContent() {
     <div className={styles.featureGrid}>
       {mockFeatures.map((feature, index) => (
         <div key={index} className={styles.featureCard}>
-          <div 
+          <div
             className={styles.featureIcon}
-            style={{ 
-              background: `linear-gradient(135deg, ${feature.color}CC, ${feature.color}66)` 
+            style={{
+              background: `linear-gradient(135deg, ${feature.color}CC, ${feature.color}66)`,
             }}
           >
             <feature.icon />
