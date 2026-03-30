@@ -1,14 +1,9 @@
 import { useEffect, useState } from "react";
-import { BRAND } from "../../config/brand";
+import { useBrand } from "../../hooks/useBrand";
 import styles from "./Header.module.css";
 
-const NAV_ITEMS = [
-  { label: "Product", href: BRAND.links.product },
-  { label: "Pricing", href: BRAND.links.pricing },
-  { label: "Docs", href: BRAND.links.docs },
-];
-
 export function Header() {
+  const brand = useBrand();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -17,20 +12,22 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const navItems = [
+    { label: "Product", href: brand.links.product },
+    { label: "Pricing", href: brand.links.pricing },
+    { label: "Docs", href: brand.links.docs },
+  ];
+
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
       <div className={styles.inner}>
         <a href="/" className={styles.logo}>
-          {BRAND.name}
+          {brand.name}
         </a>
 
         <nav className={styles.nav}>
-          {NAV_ITEMS.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={styles.navLink}
-            >
+          {navItems.map((item) => (
+            <a key={item.href} href={item.href} className={styles.navLink}>
               {item.label}
             </a>
           ))}

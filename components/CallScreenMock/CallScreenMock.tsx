@@ -20,7 +20,7 @@ import {
   MdClose,
   MdBuild,
 } from "react-icons/md";
-import { BRAND } from "../../config/brand";
+import { useBrand } from "../../hooks/useBrand";
 import styles from "./CallScreenMock.module.css";
 
 interface NotepadRendererProps {
@@ -126,7 +126,7 @@ interface CallScreenMockProps {
 }
 
 export function CallScreenMock({
-  name = BRAND.name,
+  name,
   emoji,
   subtitle = "ADVANCED VAGINAL INTELLIGENCE",
   onEndCall,
@@ -134,6 +134,7 @@ export function CallScreenMock({
   streamedMessages = [],
   streamedNotepad,
 }: CallScreenMockProps) {
+  const brand = useBrand();
   const [internalPageIndex, setInternalPageIndex] = useState(1);
   const activePageIndex =
     externalPageIndex !== undefined ? externalPageIndex : internalPageIndex;
@@ -180,6 +181,8 @@ export function CallScreenMock({
   const goToChat = () => setActivePageIndex(0);
   const goToCall = () => setActivePageIndex(1);
   const goToNotepad = () => setActivePageIndex(2);
+
+  const displayName = name || brand.name;
 
   return (
     <div className={styles.screen}>
@@ -238,7 +241,7 @@ export function CallScreenMock({
                 <MdHeadsetMic />
               </div>
             )}
-            <h2 className={styles.agentName}>{name}</h2>
+            <h2 className={styles.agentName}>{displayName}</h2>
             {subtitle && <p className={styles.agentSubtitle}>{subtitle}</p>}
 
             <div className={styles.timer}>{formatTime(seconds)}</div>

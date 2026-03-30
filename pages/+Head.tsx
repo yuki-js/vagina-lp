@@ -1,6 +1,8 @@
-import { BRAND } from "../config/brand";
+import { useBrand } from "../hooks/useBrand";
 
 export function Head() {
+  const brand = useBrand();
+
   return (
     <>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,11 +13,11 @@ export function Head() {
       />
       <meta
         property="og:title"
-        content={`${BRAND.name} — Voice AGI Notepad Agent`}
+        content={`${brand.name} — Voice AGI Notepad Agent`}
       />
       <meta
         property="og:description"
-        content="Think with your voice, let AGI write. A next-generation assistant that shapes your thoughts through real-time voice dialogue and AGI notepad."
+        content={brand.description}
       />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary_large_image" />

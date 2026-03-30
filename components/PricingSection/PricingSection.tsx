@@ -2,8 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ScrollReveal } from "../ScrollReveal/ScrollReveal";
 import { FiCheck } from "react-icons/fi";
+import { useBrand } from "../../hooks/useBrand";
 import styles from "./PricingSection.module.css";
-import { BRAND } from "../../config/brand";
 
 const FEATURES = [
   "Voice sessions",
@@ -14,6 +14,8 @@ const FEATURES = [
 ];
 
 export function PricingSection() {
+  const brand = useBrand();
+
   return (
     <section id="pricing" className={styles.section}>
       <svg className={styles.backgroundPattern} aria-hidden="true">
@@ -35,7 +37,7 @@ export function PricingSection() {
               lengthAdjust="spacingAndGlyphs"
               style={{ fontFamily: "var(--font-sans)" }}
             >
-              {BRAND.name}
+              {brand.name}
             </text>
             <text
               x="-196"
@@ -48,7 +50,7 @@ export function PricingSection() {
               lengthAdjust="spacingAndGlyphs"
               style={{ fontFamily: "var(--font-sans)" }}
             >
-              {BRAND.name}
+              {brand.name}
             </text>
             <text
               x="182"
@@ -61,7 +63,7 @@ export function PricingSection() {
               lengthAdjust="spacingAndGlyphs"
               style={{ fontFamily: "var(--font-sans)" }}
             >
-              {BRAND.name}
+              {brand.name}
             </text>
           </pattern>
         </defs>

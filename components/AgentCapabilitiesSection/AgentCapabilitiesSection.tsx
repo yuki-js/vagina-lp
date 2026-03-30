@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ScrollReveal } from "../ScrollReveal/ScrollReveal";
 import { WindowMock } from "../WindowMock/WindowMock";
-import { BRAND } from "../../config/brand";
+import { useBrand } from "../../hooks/useBrand";
 import styles from "./AgentCapabilitiesSection.module.css";
 
 // Premium Abstract SVGs
@@ -153,6 +153,7 @@ const ActionCard = ({
 };
 
 export function AgentCapabilitiesSection() {
+  const brand = useBrand();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -179,7 +180,7 @@ export function AgentCapabilitiesSection() {
             Need more intelligence? <strong>Use Recursive Agent.</strong>
           </h2>
           <p className={styles.subheading}>
-            {BRAND.name} runs a real-time Voice Agent that handles conversation, and
+            {brand.name} runs a real-time Voice Agent that handles conversation, and
             recursively calls a high-intelligence Text Agent for complex logic.
             Both agents operate concurrently as a unified hybrid system.
           </p>
@@ -346,7 +347,7 @@ export function AgentCapabilitiesSection() {
                       <br />
                       Best,
                       <br />
-                      {BRAND.name} Agent
+                      {brand.name} Agent
                     </div>
                   </div>
                 </WindowMock>

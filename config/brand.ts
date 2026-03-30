@@ -20,7 +20,7 @@ export const BRAND = {
    * Full brand description
    */
   description:
-    "Modern developer tools that empower teams to build, collaborate, and ship products faster.",
+    "Think with your voice, let AGI write. A next-generation assistant that shapes your thoughts through real-time voice dialogue and AGI notepad.",
 
   /**
    * External links

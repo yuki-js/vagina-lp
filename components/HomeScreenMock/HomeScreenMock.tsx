@@ -12,7 +12,7 @@ import {
   MdFolder,
   MdStore,
 } from "react-icons/md";
-import { BRAND } from "../../config/brand";
+import { useBrand } from "../../hooks/useBrand";
 import styles from "./HomeScreenMock.module.css";
 
 interface SpeedDialCard {
@@ -116,6 +116,7 @@ const tabOrder: TabType[] = ["speed-dial", "sessions", "agents", "more"];
 export function HomeScreenMock({
   activeTab = "speed-dial",
 }: HomeScreenMockProps) {
+  const brand = useBrand();
   const activeIndex = tabOrder.indexOf(activeTab);
 
   return (
@@ -123,7 +124,7 @@ export function HomeScreenMock({
       {/* Header */}
       <div className={styles.header}>
         <div className={styles.spacer} />
-        <h1 className={styles.title}>{BRAND.name}</h1>
+        <h1 className={styles.title}>{brand.name}</h1>
         <div className={styles.actions}>
           <button className={styles.iconButton} aria-label="Add">
             <MdAdd />

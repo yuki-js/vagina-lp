@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { BRAND } from "../../config/brand";
+import { useBrand } from "../../hooks/useBrand";
 import { WindowMock } from "../WindowMock/WindowMock";
 import styles from "./Hero.module.css";
 
@@ -26,6 +26,7 @@ const rise = {
 };
 
 export function Hero() {
+  const brand = useBrand();
   return (
     <section className={styles.hero}>
       <motion.div
@@ -45,7 +46,7 @@ export function Hero() {
         </motion.h1>
 
         <motion.p className={styles.sub} variants={rise}>
-          {BRAND.name} is a voice-powered AGI assistant with agentic
+          {brand.name} is a voice-powered AGI assistant with agentic
           note-taking. It helps you capture ideas, organize your thoughts, and
           get things done — all through natural conversation.
         </motion.p>
@@ -55,7 +56,7 @@ export function Hero() {
             Get Early Access
           </a>
           <a
-            href={BRAND.links.github}
+            href={brand.links.github}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.secondary}
@@ -75,7 +76,7 @@ export function Hero() {
           ease: [0.25, 1, 0.5, 1] as const,
         }}
       >
-        <WindowMock title={BRAND.name}>
+        <WindowMock title={brand.name}>
           <div className={styles.paneContainer}>
             {/* Left Pane - Chat Thread */}
             <div className={styles.pane}>
