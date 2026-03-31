@@ -6,5 +6,7 @@ export default {
   title: `${BRAND.name} — ${BRAND.tagline}`,
   description: BRAND.description,
 
+  favicon: "/assets/favicon.ico",
+
   extends: [vikeReact],
 } satisfies Config;

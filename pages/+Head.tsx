@@ -21,6 +21,9 @@ export function Head() {
       <meta property="og:description" content={brand.description} />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary_large_image" />
+
+      <link rel="icon" href="/assets/favicon.ico" />
+      <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
     </>
   );
 }
