@@ -37,7 +37,7 @@ export function PricingSection() {
               lengthAdjust="spacingAndGlyphs"
               style={{ fontFamily: "var(--font-sans)" }}
             >
-              {brand.name}
+              VAGINA
             </text>
             <text
               x="-196"
@@ -50,7 +50,7 @@ export function PricingSection() {
               lengthAdjust="spacingAndGlyphs"
               style={{ fontFamily: "var(--font-sans)" }}
             >
-              {brand.name}
+              VAGINA
             </text>
             <text
               x="182"
@@ -63,7 +63,7 @@ export function PricingSection() {
               lengthAdjust="spacingAndGlyphs"
               style={{ fontFamily: "var(--font-sans)" }}
             >
-              {brand.name}
+              VAGINA
             </text>
           </pattern>
         </defs>
