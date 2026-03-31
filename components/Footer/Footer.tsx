@@ -41,6 +41,11 @@ export function Footer() {
           </a>
         </div>
 
+        <div className={styles.bottom}>
+          <p className={styles.copyright}>
+            © {new Date().getFullYear()} {brand.copyright}. All rights reserved.
+          </p>
+        </div>
         <div className={styles.footHero}>{brand.name}</div>
       </div>
     </footer>

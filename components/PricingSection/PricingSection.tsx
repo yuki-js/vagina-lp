@@ -119,7 +119,9 @@ export function PricingSection() {
               ))}
             </ul>
 
-            <button className={styles.button}>Get Started for Free</button>
+            <a href={brand.links.app} className={styles.button}>
+              Get Started for Free
+            </a>
           </motion.div>
         </div>
       </div>

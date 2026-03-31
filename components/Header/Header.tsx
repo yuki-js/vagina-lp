@@ -33,7 +33,7 @@ export function Header() {
           ))}
         </nav>
 
-        <a href="#waitlist" className={styles.ctaButton}>
+        <a href={brand.links.app} className={styles.ctaButton}>
           Early Access
         </a>
       </div>

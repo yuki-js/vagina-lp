@@ -52,7 +52,7 @@ export function Hero() {
         </motion.p>
 
         <motion.div className={styles.actions} variants={rise}>
-          <a href="#waitlist" className={styles.primary}>
+          <a href={brand.links.app} className={styles.primary}>
             Get Early Access
           </a>
           <a

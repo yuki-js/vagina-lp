@@ -27,21 +27,23 @@ export const BRAND = {
    */
   links: {
     github: "https://github.com/yuki-js/vagina",
+    app: "https://vagina.app",
+    api: "https://server.vagina.app",
     docs: "/docs",
     product: "/#product",
     pricing: "/#pricing",
     terms: "/terms",
     privacy: "/privacy",
-    company: "/#company",
+    company: "https://aoki.app",
   },
 
   /**
    * Copyright holder name
    */
-  copyright: "VAGINA",
+  copyright: "AokiApp Inc.",
 
   /**
    * Legal / company name (if different from brand name)
    */
-  legalName: "VAGINA",
+  legalName: "AokiApp Inc.",
 } as const;
