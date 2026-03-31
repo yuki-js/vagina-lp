@@ -7,7 +7,7 @@ interface UseIntersectionOptions {
 }
 
 export function useIntersection<T extends HTMLElement = HTMLDivElement>(
-  options: UseIntersectionOptions = {}
+  options: UseIntersectionOptions = {},
 ) {
   const { threshold = 0.15, rootMargin = "0px", once = true } = options;
   const ref = useRef<T>(null);
@@ -16,6 +16,13 @@ export function useIntersection<T extends HTMLElement = HTMLDivElement>(
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    // Progressive enhancement: if IntersectionObserver isn't available,
+    // don't hide content forever.
+    if (typeof IntersectionObserver === "undefined") {
+      setIsVisible(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -26,7 +33,7 @@ export function useIntersection<T extends HTMLElement = HTMLDivElement>(
           setIsVisible(false);
         }
       },
-      { threshold, rootMargin }
+      { threshold, rootMargin },
     );
 
     observer.observe(el);

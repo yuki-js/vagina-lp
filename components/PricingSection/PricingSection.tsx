@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { ScrollReveal } from "../ScrollReveal/ScrollReveal";
 import { FiCheck } from "react-icons/fi";
 import { useBrand } from "../../hooks/useBrand";
@@ -71,35 +70,17 @@ export function PricingSection() {
       </svg>
       <div className={styles.container}>
         <ScrollReveal className={styles.header}>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className={styles.heading}
-          >
+          <h2 className={styles.heading}>
             Start talking to <strong>AGI</strong> today.
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            viewport={{ once: true }}
-            className={styles.subheading}
-          >
+          <p className={styles.subheading}>
             Simple, transparent pricing. Free during the initial beta period.
-          </motion.p>
+          </p>
         </ScrollReveal>
 
         <div className={styles.grid}>
-          <motion.div
-            className={styles.card}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
+          <div className={`${styles.card} ${styles.reveal}`}>
             <div className={styles.tierName}>Pro</div>
             <div className={styles.price}>
               <span className={styles.oldPrice}>$19</span>
@@ -122,7 +103,7 @@ export function PricingSection() {
             <a href={brand.links.app} className={styles.button}>
               Get Started for Free
             </a>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

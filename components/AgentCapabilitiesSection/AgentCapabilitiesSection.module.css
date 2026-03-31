@@ -80,6 +80,15 @@
   align-items: start;
 }
 
+/* No-JS / static fallback: avoid scroll-scrub sticky tricks */
+.rightColumn {
+  position: relative;
+}
+
+:global(html.js) .rightColumn {
+  /* Keep as-is (enhanced version is driven by framer-motion transforms) */
+}
+
 .persona {
   display: flex;
   flex-direction: column;

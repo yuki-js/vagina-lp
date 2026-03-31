@@ -1,6 +1,43 @@
 .section {
-  min-height: 600vh;
   position: relative;
+
+  /* No-JS fallback: static dark background */
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.22) 100%
+    ),
+    radial-gradient(
+      ellipse at center,
+      rgba(224, 164, 88, 0.14) 0%,
+      rgba(224, 164, 88, 0.063) 32%,
+      transparent 80%
+    ),
+    radial-gradient(
+      ellipse at center,
+      rgba(31, 138, 112, 0.18) 0%,
+      rgba(31, 138, 112, 0.081) 21%,
+      transparent 60%
+    ),
+    linear-gradient(to bottom right, #07111a, #102b33 36%, #3e2a1f 74%, #090b10);
+  background-repeat: no-repeat;
+  background-position:
+    0 0,
+    50% 46%,
+    -16% -24%,
+    0 0;
+  background-size:
+    100% 100%,
+    72% 72%,
+    64% 64%,
+    100% 100%;
+}
+
+:global(html.js) .section {
+  min-height: 600vh;
+  background: transparent;
 }
 
 .container {
@@ -9,6 +46,11 @@
 }
 
 .expandingBg {
+  display: none;
+}
+
+:global(html.js) .expandingBg {
+  display: block;
   width: 100lvw;
   height: 100lvh;
   position: sticky;
@@ -84,6 +126,9 @@
 
 .stickyContainer {
   width: 100%;
+}
+
+:global(html.js) .stickyContainer {
   height: 100%;
   min-height: 500vh;
 }
@@ -94,6 +139,12 @@
   justify-content: flex-start;
   gap: 48px;
   margin-top: 64px;
+
+  /* Default (no-JS): normal flow, but keep a positioned ancestor for `.panel` */
+  position: relative;
+}
+
+:global(html.js) .preview {
   position: sticky;
   top: 120px;
 }
@@ -136,6 +187,32 @@
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.7);
   margin: 0;
+}
+
+.panelContent {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+:global(html.js) .panelContent {
+  animation: panelSwap 0.25s var(--ease-out-quart);
+}
+
+@keyframes panelSwap {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html.js) .panelContent {
+    animation: none;
+  }
 }
 
 /* Responsive adjustments */

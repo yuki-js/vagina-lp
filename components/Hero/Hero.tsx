@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useBrand } from "../../hooks/useBrand";
 import { WindowMock } from "../WindowMock/WindowMock";
 import styles from "./Hero.module.css";
@@ -11,47 +10,28 @@ const BARS = Array.from({ length: 64 }, (_, i) => {
   return h[i % h.length];
 });
 
-const stagger = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.09 } },
-};
-
-const rise = {
-  hidden: { opacity: 0, y: 16 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] as const },
-  },
-};
-
 export function Hero() {
   const brand = useBrand();
   return (
     <section className={styles.hero}>
-      <motion.div
-        className={styles.text}
-        variants={stagger}
-        initial="hidden"
-        animate="show"
-      >
-        <motion.span className={styles.badge} variants={rise}>
+      <div className={`${styles.text} ${styles.reveal}`}>
+        <span className={styles.badge}>
           <span className={styles.badgeDot} />
           April Fools
-        </motion.span>
+        </span>
 
-        <motion.h1 className={styles.heading} variants={rise}>
+        <h1 className={styles.heading}>
           <strong>V</strong>oice <strong>AGI</strong> <wbr />
           <strong>N</strong>otepad <strong>A</strong>gent
-        </motion.h1>
+        </h1>
 
-        <motion.p className={styles.sub} variants={rise}>
+        <p className={styles.sub}>
           {brand.name} is a voice-powered AGI assistant with agentic
           note-taking. It helps you capture ideas, organize your thoughts, and
           get things done — all through natural conversation.
-        </motion.p>
+        </p>
 
-        <motion.div className={styles.actions} variants={rise}>
+        <div className={styles.actions}>
           <a href={brand.links.app} className={styles.primary}>
             Get Early Access
           </a>
@@ -63,19 +43,10 @@ export function Hero() {
           >
             GitHub
           </a>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
-      <motion.div
-        className={styles.preview}
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.6,
-          delay: 0.4,
-          ease: [0.25, 1, 0.5, 1] as const,
-        }}
-      >
+      <div className={`${styles.preview} ${styles.reveal}`}>
         <WindowMock title={brand.name}>
           <div className={styles.paneContainer}>
             {/* Left Pane - Chat Thread */}
@@ -164,7 +135,7 @@ export function Hero() {
             </div>
           </div>
         </WindowMock>
-      </motion.div>
+      </div>
     </section>
   );
 }

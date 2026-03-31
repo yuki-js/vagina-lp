@@ -5,6 +5,9 @@ export function Head() {
 
   return (
     <>
+      {/* Progressive enhancement flag for CSS (no-JS => no animations) */}
+      <script>{"document.documentElement.classList.add('js');"}</script>
+
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       <link
@@ -15,10 +18,7 @@ export function Head() {
         property="og:title"
         content={`${brand.name} — Voice AGI Notepad Agent`}
       />
-      <meta
-        property="og:description"
-        content={brand.description}
-      />
+      <meta property="og:description" content={brand.description} />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary_large_image" />
     </>

@@ -18,6 +18,41 @@
   gap: 24px;
 }
 
+/* Progressive enhancement: reveal animation only when JS is running */
+.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+:global(html.js) .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: heroRise 0.6s var(--ease-out-quart) forwards;
+}
+
+:global(html.js) .text.reveal {
+  animation-delay: 0.05s;
+}
+
+:global(html.js) .preview.reveal {
+  animation-delay: 0.35s;
+}
+
+@keyframes heroRise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html.js) .reveal {
+    animation: none;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .badge {
   display: inline-flex;
   align-items: center;

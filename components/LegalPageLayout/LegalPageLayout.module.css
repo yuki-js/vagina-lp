@@ -24,9 +24,36 @@
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 32px;
   padding: 64px;
-  box-shadow: 
+  box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.05),
     0 10px 15px -3px rgba(0, 0, 0, 0.03);
+}
+
+/* Progressive enhancement: reveal animation only when JS is running */
+.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+:global(html.js) .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: legalRise 0.55s var(--ease-out-quart) forwards;
+}
+
+@keyframes legalRise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html.js) .reveal {
+    animation: none;
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .pageHeader {
@@ -102,11 +129,11 @@
     padding: 32px 24px;
     border-radius: 20px;
   }
-  
+
   .title {
     font-size: 2.25rem;
   }
-  
+
   .container {
     padding-top: 100px;
   }

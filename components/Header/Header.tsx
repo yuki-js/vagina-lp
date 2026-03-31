@@ -1,16 +1,8 @@
-import { useEffect, useState } from "react";
 import { useBrand } from "../../hooks/useBrand";
 import styles from "./Header.module.css";
 
 export function Header() {
   const brand = useBrand();
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const navItems = [
     { label: "Product", href: brand.links.product },
@@ -19,7 +11,7 @@ export function Header() {
   ];
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
+    <header className={styles.header}>
       <div className={styles.inner}>
         <a href="/" className={styles.logo}>
           {brand.name}

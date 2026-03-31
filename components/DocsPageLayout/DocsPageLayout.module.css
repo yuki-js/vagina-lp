@@ -33,6 +33,33 @@
   min-width: 0; /* Important for preventing overflow from code blocks */
 }
 
+/* Progressive enhancement: reveal animation only when JS is running */
+.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+:global(html.js) .reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: docsRise 0.45s var(--ease-out-quart) forwards;
+}
+
+@keyframes docsRise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html.js) .reveal {
+    animation: none;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .pageHeader {
   margin-bottom: 40px;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { MotionDiv } from "../MotionFallback/MotionFallback";
 import {
   MdChatBubbleOutline,
   MdOutlineNoteAlt,
@@ -187,10 +187,13 @@ export function CallScreenMock({
   return (
     <div className={styles.screen}>
       <div className={styles.overlay} />
-      <motion.div
+      <MotionDiv
         className={styles.pageView}
         animate={{ x: `-${activePageIndex * 33.3333}%` }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        fallbackStyle={{
+          transform: `translateX(-${activePageIndex * 33.3333}%)`,
+        }}
       >
         {/* Chat Pane */}
         <div className={styles.page}>
@@ -246,12 +249,18 @@ export function CallScreenMock({
 
             <div className={styles.timer}>{formatTime(seconds)}</div>
 
-            <motion.div className={styles.visualizer} initial={false}>
+            <MotionDiv className={styles.visualizer} initial={false}>
               {levels.map((level, i) => (
-                <motion.div
+                <MotionDiv
                   key={i}
                   className={styles.bar}
                   animate={{
+                    height: `${level * 100}%`,
+                    backgroundColor: isMuted
+                      ? "rgba(184, 184, 209, 0.3)"
+                      : `rgba(108, 99, 255, ${0.6 + level * 0.4})`,
+                  }}
+                  fallbackStyle={{
                     height: `${level * 100}%`,
                     backgroundColor: isMuted
                       ? "rgba(184, 184, 209, 0.3)"
@@ -264,7 +273,7 @@ export function CallScreenMock({
                   }}
                 />
               ))}
-            </motion.div>
+            </MotionDiv>
           </div>
 
           <div className={styles.controlsContainer}>
@@ -387,7 +396,7 @@ export function CallScreenMock({
             </div>
           </div>
         </div>
-      </motion.div>
+      </MotionDiv>
     </div>
   );
 }

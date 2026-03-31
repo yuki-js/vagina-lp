@@ -1,9 +1,47 @@
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { useScroll, useTransform, useSpring } from "framer-motion";
+import { MotionDiv } from "../MotionFallback/MotionFallback";
 import { ScrollReveal } from "../ScrollReveal/ScrollReveal";
 import { WindowMock } from "../WindowMock/WindowMock";
 import { useBrand } from "../../hooks/useBrand";
 import styles from "./AgentCapabilitiesSection.module.css";
+
+function useHasMounted() {
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+  return hasMounted;
+}
+
+function usePrefersReducedMotion() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    if (
+      typeof window === "undefined" ||
+      typeof window.matchMedia !== "function"
+    ) {
+      return;
+    }
+
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setPrefersReducedMotion(mq.matches);
+
+    update();
+
+    if (typeof mq.addEventListener === "function") {
+      mq.addEventListener("change", update);
+      return () => mq.removeEventListener("change", update);
+    }
+
+    // Safari < 14
+    (mq as any).addListener?.(update);
+    return () => (mq as any).removeListener?.(update);
+  }, []);
+
+  return prefersReducedMotion;
+}
 
 // Premium Abstract SVGs
 const HumanFace = () => (
@@ -131,8 +169,8 @@ const ActionCard = ({
         : styles.alignCenter;
 
   // Stagger start points for 7 items
-  const start = index * 0.1;
-  const end = start + 0.05;
+  const start = index * 0.15 - 0.2;
+  const end = 1;
 
   const opacity = useTransform(progress, [start, end], [0, 1]);
   const scale = useTransform(progress, [start, end], [0.95, 1]);
@@ -143,17 +181,219 @@ const ActionCard = ({
   );
 
   return (
-    <motion.div
+    <MotionDiv
+      fallbackStyle={{ opacity: 1, filter: "none", transform: "none" }}
       style={{ opacity, scale, filter }}
       className={`${styles.actionCardWrapper} ${alignClass}`}
     >
       {children}
-    </motion.div>
+    </MotionDiv>
   );
 };
 
-export function AgentCapabilitiesSection() {
-  const brand = useBrand();
+const ActionCardStatic = ({
+  children,
+  align = "center",
+}: {
+  children: React.ReactNode;
+  align?: "left" | "center" | "right";
+}) => {
+  const alignClass =
+    align === "left"
+      ? styles.alignLeft
+      : align === "right"
+        ? styles.alignRight
+        : styles.alignCenter;
+
+  return (
+    <div className={`${styles.actionCardWrapper} ${alignClass}`}>
+      {children}
+    </div>
+  );
+};
+
+type Brand = ReturnType<typeof useBrand>;
+
+function AgentCapabilitiesSectionStatic({ brand }: { brand: Brand }) {
+  return (
+    <section id="capabilities" className={styles.section}>
+      <div className={styles.container}>
+        <ScrollReveal className={styles.header}>
+          <h2 className={styles.heading}>
+            Need more intelligence? <strong>Use Recursive Agent.</strong>
+          </h2>
+          <p className={styles.subheading}>
+            {brand.name} runs a real-time Voice Agent that handles conversation,
+            and recursively calls a high-intelligence Text Agent for complex
+            logic. Both agents operate concurrently as a unified hybrid system.
+          </p>
+        </ScrollReveal>
+
+        <div className={styles.interactionContainer}>
+          <div className={styles.stickyPersonas}>
+            {/* Human */}
+            <div className={styles.persona}>
+              <div className={styles.faceWrapper}>
+                <HumanFace />
+              </div>
+              <span className={styles.personaName}>Human User</span>
+            </div>
+
+            <WiFiWaveLeft />
+
+            {/* Voice Agent */}
+            <div className={styles.persona}>
+              <div className={styles.faceWrapper}>
+                <div className={styles.rotatingFace}>
+                  <VoiceAgentFace />
+                </div>
+              </div>
+              <span className={styles.personaName}>Voice Agent</span>
+            </div>
+
+            <WiFiWaveRight />
+
+            {/* Brain Agent */}
+            <div className={styles.persona}>
+              <div className={styles.faceWrapper}>
+                <BrainFace />
+              </div>
+              <span className={styles.personaName}>Text Agent</span>
+            </div>
+          </div>
+
+          <div className={styles.twoColumnGrid}>
+            <div className={styles.leftColumn}>
+              <div className={styles.threadFlow}>
+                <div
+                  className={styles.trackingLine}
+                  style={{ height: "100%" }}
+                />
+
+                <ActionCardStatic align="left">
+                  <div className={styles.glassCard}>
+                    Extract action items and draft a follow-up email from the
+                    sales call.
+                  </div>
+                </ActionCardStatic>
+
+                <ActionCardStatic align="center">
+                  <div className={styles.glassCard}>
+                    Got it. I'll recruit the Deep Intelligence Agent to analyze
+                    the transcript.
+                  </div>
+                </ActionCardStatic>
+
+                <ActionCardStatic align="center">
+                  <div className={styles.pillBadge}>
+                    <span className={styles.spinner}></span>
+                    Calling Deep Intelligence Agent
+                  </div>
+                </ActionCardStatic>
+
+                <ActionCardStatic align="right">
+                  <div className={`${styles.glassCard} ${styles.glowingCard}`}>
+                    Processing CRM context and 45-minute call transcript...
+                  </div>
+                </ActionCardStatic>
+
+                <ActionCardStatic align="right">
+                  <div className={`${styles.glassCard} ${styles.glowingCard}`}>
+                    I've synthesized the required items.
+                  </div>
+                </ActionCardStatic>
+
+                <ActionCardStatic align="center">
+                  <div className={styles.glassCard}>
+                    Thanks. Saving the results directly to your Notepad.
+                  </div>
+                </ActionCardStatic>
+
+                <ActionCardStatic align="center">
+                  <div className={styles.pillBadge}>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      className={styles.checkIcon}
+                    >
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    meeting_notes.md updated
+                  </div>
+                </ActionCardStatic>
+              </div>
+            </div>
+
+            <div className={styles.rightColumn}>
+              <WindowMock title="meeting_notes.md">
+                <div className={styles.notepadBody}>
+                  <h3># Action Items</h3>
+                  <div className={styles.checkItem}>
+                    <div className={styles.checkCircle}>
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="white"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    Draft follow-up email to stakeholders
+                  </div>
+                  <div className={styles.checkItem}>
+                    <div className={styles.checkCircle}>
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="white"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    Update CRM with new budget requirements
+                  </div>
+
+                  <div className={styles.draftCard}>
+                    <strong>Email Draft:</strong>
+                    <br />
+                    <br />
+                    Hi Team,
+                    <br />
+                    <br />
+                    Great call today. As discussed, we are adjusting the Q3
+                    budget requirements and I will be sending over the updated
+                    metrics by Friday.
+                    <br />
+                    <br />
+                    Best,
+                    <br />
+                    {brand.name} Agent
+                  </div>
+                </div>
+              </WindowMock>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AgentCapabilitiesSectionEnhanced({ brand }: { brand: Brand }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -164,6 +404,7 @@ export function AgentCapabilitiesSection() {
     stiffness: 100,
     damping: 30,
   });
+
   // For the tracking line
   const lineHeight = useTransform(smoothProgress, [0.1, 0.9], ["0%", "100%"]);
 
@@ -180,9 +421,9 @@ export function AgentCapabilitiesSection() {
             Need more intelligence? <strong>Use Recursive Agent.</strong>
           </h2>
           <p className={styles.subheading}>
-            {brand.name} runs a real-time Voice Agent that handles conversation, and
-            recursively calls a high-intelligence Text Agent for complex logic.
-            Both agents operate concurrently as a unified hybrid system.
+            {brand.name} runs a real-time Voice Agent that handles conversation,
+            and recursively calls a high-intelligence Text Agent for complex
+            logic. Both agents operate concurrently as a unified hybrid system.
           </p>
         </ScrollReveal>
 
@@ -224,9 +465,10 @@ export function AgentCapabilitiesSection() {
               {/* Scrolling Abstract Data Flow */}
               <div className={styles.threadFlow}>
                 {/* Dynamic Tracking Line */}
-                <motion.div
+                <MotionDiv
                   className={styles.trackingLine}
                   style={{ height: lineHeight }}
+                  fallbackStyle={{ height: "100%" }}
                 />
 
                 <ActionCard index={0} progress={smoothProgress} align="left">
@@ -288,12 +530,13 @@ export function AgentCapabilitiesSection() {
             </div>
 
             <div className={styles.rightColumn}>
-              <motion.div
+              <MotionDiv
                 style={{
                   opacity: windowOpacity,
                   y: windowY,
                   scale: windowScale,
                 }}
+                fallbackStyle={{ opacity: 1, transform: "none" }}
               >
                 <WindowMock title="meeting_notes.md">
                   <div className={styles.notepadBody}>
@@ -351,11 +594,25 @@ export function AgentCapabilitiesSection() {
                     </div>
                   </div>
                 </WindowMock>
-              </motion.div>
+              </MotionDiv>
             </div>
           </div>
         </div>
       </div>
     </section>
   );
+}
+
+export function AgentCapabilitiesSection() {
+  const brand = useBrand();
+  const hasMounted = useHasMounted();
+  const prefersReducedMotion = usePrefersReducedMotion();
+
+  // SSR/no-JS: always static.
+  // JS-enabled: upgrade to scroll-scrub after mount (unless user prefers reduced motion).
+  if (!hasMounted || prefersReducedMotion) {
+    return <AgentCapabilitiesSectionStatic brand={brand} />;
+  }
+
+  return <AgentCapabilitiesSectionEnhanced brand={brand} />;
 }

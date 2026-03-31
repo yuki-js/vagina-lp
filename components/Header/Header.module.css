@@ -9,10 +9,16 @@
     background-color 0.4s ease,
     backdrop-filter 0.4s ease,
     border-color 0.4s ease;
+
+  /* No-JS friendly: always readable */
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid transparent;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid rgba(26, 26, 46, 0.02);
 }
 
+/* Kept for backward-compat if we ever reintroduce scroll behavior */
 .scrolled {
   background-color: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(8px);

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ScrollReveal } from "../ScrollReveal/ScrollReveal";
 import { PhoneMock } from "../PhoneMock/PhoneMock";
 import { CallScreenMock, ChatMessage } from "../CallScreenMock/CallScreenMock";
@@ -204,36 +203,18 @@ export function CallExperienceSection() {
       />
       <div className={styles.container}>
         <ScrollReveal className={styles.header}>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className={styles.heading}
-          >
+          <h2 className={styles.heading}>
             Talk, Think, Let AGI Handle the Rest
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            viewport={{ once: true }}
-            className={styles.description}
-          >
+          <p className={styles.description}>
             Focus on expressing your ideas while our AGI agent handles
             note-taking, organization, and follow-up actions automatically.
-          </motion.p>
+          </p>
         </ScrollReveal>
 
         <div className={styles.stickyContainer}>
-          <motion.div
-            className={styles.preview}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
+          <div className={styles.preview}>
             <PhoneMock size="xlarge" isDark>
               <CallScreenMock
                 externalPageIndex={pageIndex}
@@ -243,24 +224,16 @@ export function CallExperienceSection() {
             </PhoneMock>
 
             <div className={styles.panel}>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTabIndex}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <h3 className={styles.panelTitle}>
-                    {tabs[activeTabIndex].title}
-                  </h3>
-                  <p className={styles.panelDescription}>
-                    {tabs[activeTabIndex].description}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
+              <div key={activeTabIndex} className={styles.panelContent}>
+                <h3 className={styles.panelTitle}>
+                  {tabs[activeTabIndex].title}
+                </h3>
+                <p className={styles.panelDescription}>
+                  {tabs[activeTabIndex].description}
+                </p>
+              </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
