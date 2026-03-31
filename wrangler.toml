@@ -1,0 +1,8 @@
+name = "vagina-lp"
+compatibility_date = "2024-10-01"
+compatibility_flags = ["nodejs_compat"]
+main = "server/worker.ts"
+assets = { directory = "./dist/client" }
+
+[observability]
+enabled = true

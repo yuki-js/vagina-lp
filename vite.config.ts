@@ -4,4 +4,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [vike(), react()],
+  ssr: {
+    noExternal: true, // Necessary for workers
+  },
 });

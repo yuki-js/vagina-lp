@@ -2,7 +2,9 @@
   "scripts": {
     "dev": "vike dev",
     "build": "vike build",
-    "preview": "vike build && vike preview"
+    "preview": "vike build && vike preview",
+    "worker:dev": "wrangler dev",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "framer-motion": "^12.34.3",
@@ -15,11 +17,13 @@
     "vike-react": "^0.6.20"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260329.1",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.4",
     "typescript": "^5.9.3",
-    "vite": "^7.3.1"
+    "vite": "^7.3.1",
+    "wrangler": "^4.78.0"
   },
   "type": "module"
 }
