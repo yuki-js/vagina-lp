@@ -76,6 +76,8 @@ Voice AGI Notepad Agentは、これらの課題を解決するために開発さ
 
 Webアプリはこちら: [https://vagina.app/](https://vagina.app/)
 
+**現状ログイン機能が間に合ってません！Azure OpenAI ServiceのAPIキーのBYOK方式のみご利用いただけます。近日中にAPIキーなしで誰でも使えるようにします！**
+
 Android: APK配信予定
 
 iOS: App Storeに通るわけないので代替ストアを使いましょう。
