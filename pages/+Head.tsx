@@ -18,6 +18,19 @@ export function Head() {
         property="og:title"
         content={`${brand.name} — Voice AGI Notepad Agent`}
       />
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-4YSL3WCQSV"
+      ></script>
+      <script>
+        {`
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4YSL3WCQSV');`}
+      </script>
+
       <meta property="og:description" content={brand.description} />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary_large_image" />
